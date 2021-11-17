@@ -1,0 +1,59 @@
+<mat-toolbar>Pedidos</mat-toolbar>
+
+<div class="example-container mat-elevation-z8">
+
+    <div class="example-header">
+        <mat-form-field>
+            <input matInput (keyup)="filter($event)" placeholder="Buscar pedidos">
+        </mat-form-field>
+    </div>
+
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="customer">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Cliente </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.customer!.names}} {{row.customer!.surnames}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="orderDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.orderDate!}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.address}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button mat-button color="primary" (click)="addEdit(row)">
+                    <mat-icon>ballot</mat-icon>
+                </button>
+                <button mat-button color="accent" (click)="delete(row)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns:displayedColumns;"></mat-row>
+
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+
+</div>
+
+<br>
+
+<button mat-fab color="accent" (click)="addEdit()" style="float: right; margin-right: 20px;">
+    <mat-icon>create</mat-icon>
+</button>

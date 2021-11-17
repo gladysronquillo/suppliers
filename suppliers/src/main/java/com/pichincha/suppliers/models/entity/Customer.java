@@ -14,13 +14,13 @@ import com.pichincha.suppliers.core.util.model.entity.Base;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Customer extends Base {
 
-    @Column(name = "nombres", length = 60)
+    @Column(name = "nombres")
     private String names;
 
-    @Column(name = "apellidos", length = 60)
+    @Column(name = "apellidos")
     private String surnames;
 
-    @Column(name = "identificacion", length = 60)
+    @Column(name = "identificacion")
     private String documentNumber;
     
     @Transient

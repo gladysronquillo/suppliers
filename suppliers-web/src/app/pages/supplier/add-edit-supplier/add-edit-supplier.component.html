@@ -1,0 +1,8 @@
+<div>
+    <mat-form-field>
+        <input matInput placeholder="Descripcion" [(ngModel)]="supplier!.description">
+    </mat-form-field>
+</div>
+
+<button mat-raised-button color="primary" (click)="ok()">Aceptar</button>
+<button mat-raised-button color="accent" (click)="close()">Cancelar</button>

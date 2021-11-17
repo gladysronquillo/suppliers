@@ -1,0 +1,25 @@
+<div>
+    <mat-form-field>
+        <input matInput placeholder="Codigo" [(ngModel)]="product!.code">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Descripcion" [(ngModel)]="product!.description">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Precio" [(ngModel)]="product!.price">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Stock" [(ngModel)]="product!.stock">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Proveedor</mat-label>
+        <mat-select [(value)]="product!.supplierId">
+          <mat-option *ngFor="let supplier of suppliers" [value]="supplier.id">
+            {{ supplier.description }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<button mat-raised-button color="primary" (click)="ok()">Aceptar</button>
+<button mat-raised-button color="accent" (click)="close()">Cancelar</button>

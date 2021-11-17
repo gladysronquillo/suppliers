@@ -1,0 +1,18 @@
+<div>
+  
+    <mat-form-field>
+        <mat-label>Producto</mat-label>
+        <mat-select [(value)]="orderDetail!.product" (selectionChange)="change($event.value.id)">
+          <mat-option *ngFor="let product of products" [value]="product">
+            {{ product.description }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Cantidad" [(ngModel)]="orderDetail!.quantity">
+    </mat-form-field>
+</div>
+
+<button mat-raised-button color="primary" (click)="ok()">Aceptar</button>
+<button mat-raised-button color="accent" (click)="close()">Cancelar</button>

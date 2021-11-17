@@ -15,8 +15,11 @@ import com.pichincha.suppliers.core.util.model.entity.Base;
 public class OrderDetail extends Base {
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	@JoinColumn(name = "producto", nullable = false)
+	@JoinColumn(name = "producto", insertable = false, updatable = false, nullable = false)
 	private Product product;
+
+	@Column(name = "producto")
+	private Long productId;
 
 	@JsonBackReference("Order")
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
@@ -32,6 +35,14 @@ public class OrderDetail extends Base {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 
 	public Order getOrder() {

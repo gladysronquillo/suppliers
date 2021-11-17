@@ -16,40 +16,40 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pichincha.suppliers.core.application.AppSpringCtx;
 import com.pichincha.suppliers.core.util.utility.BaseController;
-import com.pichincha.suppliers.models.entity.Supplier;
-import com.pichincha.suppliers.service.ISupplierService;
+import com.pichincha.suppliers.models.entity.Product;
+import com.pichincha.suppliers.service.IProductService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/supplier")
-public class SupplierController extends BaseController{
+@RequestMapping("/api/product")
+public class ProductController extends BaseController{
 	
-	public SupplierController() {
-		super(SupplierController.class);
+	public ProductController() {
+		super(ProductController.class);
 	}
 	
 	@GetMapping
 	public ResponseEntity<Object> findAll(){
 		try {
-			return new ResponseEntity<>(AppSpringCtx.getBean(ISupplierService.class).findAll(), HttpStatus.OK);
+			return new ResponseEntity<>(AppSpringCtx.getBean(IProductService.class).findAll(), HttpStatus.OK);
 		} catch (Exception ex) {
 			return this.exceptionControllerManagement(ex, this);
 		}
 	}
 
 	@PostMapping
-	public ResponseEntity<Object> save(@Valid @RequestBody Supplier supplier) {
+	public ResponseEntity<Object> save(@Valid @RequestBody Product product) {
 		try {
-			return new ResponseEntity<>(AppSpringCtx.getBean(ISupplierService.class).save(supplier), HttpStatus.OK);
+			return new ResponseEntity<>(AppSpringCtx.getBean(IProductService.class).save(product), HttpStatus.OK);
 		} catch (Exception ex) {
 			return this.exceptionControllerManagement(ex, this);
 		}
 	}
 
 	@PutMapping
-	public ResponseEntity<Object> update(@Valid @RequestBody Supplier supplier) {
+	public ResponseEntity<Object> update(@Valid @RequestBody Product product) {
 		try {
-			return new ResponseEntity<>(AppSpringCtx.getBean(ISupplierService.class).update(supplier), HttpStatus.OK);
+			return new ResponseEntity<>(AppSpringCtx.getBean(IProductService.class).update(product), HttpStatus.OK);
 		} catch (Exception ex) {
 			return this.exceptionControllerManagement(ex, this);
 		}
@@ -58,7 +58,7 @@ public class SupplierController extends BaseController{
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> delete(@PathVariable("id") Long id) {
 		try {
-			AppSpringCtx.getBean(ISupplierService.class).delete(id);
+			AppSpringCtx.getBean(IProductService.class).delete(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (Exception ex) {
 			return this.exceptionControllerManagement(ex, this);
