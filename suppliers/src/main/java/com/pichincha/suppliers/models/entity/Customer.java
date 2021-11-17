@@ -6,10 +6,12 @@ import javax.persistence.PostLoad;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.fasterxml.jackson.databind.deser.Deserializers.Base;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.pichincha.suppliers.core.util.model.entity.Base;
 
 @Entity
 @Table(name = "cliente")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Customer extends Base {
 
     @Column(name = "nombres", length = 60)

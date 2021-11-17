@@ -8,6 +8,8 @@ import org.apache.commons.lang3.math.NumberUtils;
 
 public class AppConstants {
 
+	public static final String PREFIX_PACKAGE = "com.pichincha.suppliers";
+	public static final String PREFIX_PACKAGE_CORE = "com.pichincha.suppliers.core";
 	public static final int TABLE_SIZE = 20;
 	public static final String JSON_VIEW = "jackson-page-with-jsonview";
 	public static final String COMMA_SEPARATOR = ",";

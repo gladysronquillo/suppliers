@@ -7,13 +7,10 @@ import org.springframework.stereotype.Component;
 public class AppSpringCtx implements ApplicationContextAware {
 
 	private static ApplicationContext appCtx;
-	
-	private static AppProperties appProp;
 
 	public void setApplicationContext(ApplicationContext context) {
 		if (appCtx == null) {
 			appCtx = context;
-			appProp = getBean(AppProperties.class);
 		}
 	}
 	
@@ -23,9 +20,5 @@ public class AppSpringCtx implements ApplicationContextAware {
 
 	public static ApplicationContext getAppCtx() {
 		return appCtx;
-	}
-	
-	public static AppProperties getAppProp() {
-		return appProp;
 	}
 }

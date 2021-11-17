@@ -2,63 +2,25 @@ package com.pichincha.suppliers.models.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.PostLoad;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-import com.fasterxml.jackson.databind.deser.Deserializers.Base;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.pichincha.suppliers.core.util.model.entity.Base;
 
 @Entity
 @Table(name = "proveedor")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Supplier extends Base {
 
-    @Column(name = "nombres", length = 60)
-    private String names;
+    @Column(name = "descripcion", columnDefinition = "text")
+    private String description;
 
-    @Column(name = "apellidos", length = 60)
-    private String surnames;
-
-    @Column(name = "identificacion", length = 60)
-    private String documentNumber;
-    
-    @Transient
-    private String fullName;     
-
-    public String getNames() {
-		return names;
-	}
-    
-	public void setNames(String names) {
-		this.names = names;
+	public String getDescription() {
+		return description;
 	}
 
-	public String getSurnames() {
-		return surnames;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-
-	public void setSurnames(String surnames) {
-		this.surnames = surnames;
-	}
-
-	public String getDocumentNumber() {
-		return documentNumber;
-	}
-
-	public void setDocumentNumber(String documentNumber) {
-		this.documentNumber = documentNumber;
-	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	@PostLoad
-    private void postLoad() {
-        this.fullName = names.concat(" ").concat(surnames);
-    }
-
+  
 }
